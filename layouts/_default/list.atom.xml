@@ -106,9 +106,6 @@
                 {{ range $taxo,$_ := . }} <!-- Defaults taxos: "tags", "categories" -->
                 {{ with $page.Param $taxo }}
                         {{ $taxo_list := . }} <!-- $taxo_list will be the tags/categories list -->
-                        {{ if not (reflect.IsSlice $taxo_list) }}
-                          {{ $taxo_list = slice $taxo_list }}
-                        {{ end }}
                         {{ with site.GetPage (printf "/%s" $taxo) }}
                             {{ $taxonomy_page := . }}
                             {{ range $taxo_list }} <!-- Below, assuming pretty URLs -->
